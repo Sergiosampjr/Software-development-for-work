@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CPIDT | Complexo de Pesquisa, Desenvolvimento e Inovação</title>
+  <link rel="stylesheet" href="css/processo.css">
+  <meta name="description" content="CPIDT — Complexo de Pesquisa, Inovação e Desenvolvimento Tecnológico da UECE. Pesquisa aplicada, IA, saúde digital, sistemas embarcados, redes inteligentes e cibersegurança para a indústria." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --navy:#082453;
+      --blue:#0f64a4;
+      --blue-2:#1f8ec9;
+      --cyan:#12a8a8;
+      --orange:#e56b24;
+      --red:#cc2030;
+      --ink:#122033;
+      --muted:#64748b;
+      --line:#dbe7f3;
+      --soft:#eef7ff;
+      --white:#fff;
+      --shadow:0 22px 60px rgba(8,36,83,.16);
+      --radius:26px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink);background:#f8fbff;line-height:1.55;}
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1160px,92vw);margin-inline:auto}
+    .topbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);backdrop-filter:blur(18px);border-bottom:1px solid rgba(219,231,243,.9)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:14px;font-weight:900;color:var(--navy);letter-spacing:-.04em}
+    .brand-logo{width:76px;height:76px;object-fit:contain;display:block}
+    .brand-text{line-height:1}
+    .brand small{display:block;font-size:11px;letter-spacing:.03em;font-weight:700;color:var(--muted);margin-top:6px}
+    .menu{display:flex;gap:22px;align-items:center;font-size:14px;font-weight:700;color:#35506f}
+    .menu a:hover{color:var(--blue)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:999px;padding:13px 20px;background:var(--navy);color:white;font-weight:800;box-shadow:0 16px 36px rgba(8,36,83,.22);transition:.2s transform,.2s box-shadow}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 20px 44px rgba(8,36,83,.28)}
+    .btn.alt{background:white;color:var(--navy);border:1px solid var(--line);box-shadow:none}
+    .hero{position:relative;overflow:hidden;padding:86px 0 56px;background:radial-gradient(circle at 85% 8%,rgba(18,168,168,.23),transparent 28%),radial-gradient(circle at 12% 28%,rgba(31,142,201,.18),transparent 28%),linear-gradient(180deg,#fff 0%,#eef7ff 100%)}
+    .hero:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(15,100,164,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(15,100,164,.08) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(180deg,rgba(0,0,0,.75),transparent 85%)}
+    .hero-grid{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(18,168,168,.26);background:rgba(255,255,255,.75);color:var(--blue);border-radius:999px;padding:8px 13px;font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:.08em}
+    .eyebrow:before{content:"";width:9px;height:9px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 6px rgba(18,168,168,.12)}
+    h1{font-size:clamp(42px,6vw,74px);line-height:.98;margin:20px 0 20px;color:var(--navy);letter-spacing:-.075em}
+    .lead{font-size:clamp(18px,2.2vw,23px);color:#35506f;max-width:680px;margin:0 0 28px}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin:32px 0}
+    .hero-card{position:relative;border-radius:34px;overflow:hidden;min-height:560px;box-shadow:var(--shadow);background:#0c315f}
+    .hero-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:.9;filter:saturate(1.02) contrast(1.02)}
+    .hero-card:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,36,83,.08),rgba(8,36,83,.86))}
+    .glass{position:absolute;left:24px;right:24px;bottom:24px;z-index:2;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.13);backdrop-filter:blur(14px);border-radius:24px;padding:24px;color:white}
+    .glass strong{display:block;font-size:24px;margin-bottom:8px}.glass p{margin:0;color:#e8f5ff}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:26px}.stat{background:white;border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:0 8px 26px rgba(8,36,83,.05)}.stat b{font-size:34px;color:var(--blue);display:block;line-height:1}.stat span{font-size:13px;color:var(--muted);font-weight:700}
+    section{padding:82px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:34px}.section-head h2{font-size:clamp(32px,4vw,50px);line-height:1.05;color:var(--navy);letter-spacing:-.055em;margin:0}.section-head p{color:var(--muted);max-width:580px;margin:0;font-size:17px}.tag{color:var(--orange);font-weight:900;text-transform:uppercase;letter-spacing:.11em;font-size:13px;margin-bottom:10px;display:block}.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}.card{background:white;border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:0 14px 40px rgba(8,36,83,.07)}.card .icon{width:48px;height:48px;border-radius:16px;background:var(--soft);display:grid;place-items:center;color:var(--blue);font-size:24px;margin-bottom:20px}.card h3{margin:0 0 10px;color:var(--navy);font-size:21px;letter-spacing:-.02em}.card p{margin:0;color:#4b6078}.highlight{background:linear-gradient(135deg,var(--navy),#0f72b6);color:white}.highlight h3,.highlight p{color:white}.highlight .icon{background:rgba(255,255,255,.15);color:white}.split{display:grid;grid-template-columns:.9fr 1.1fr;gap:34px;align-items:center}.visual{border-radius:34px;overflow:hidden;box-shadow:var(--shadow);background:#dbeafe}.visual img{display:block;width:100%;height:100%;min-height:420px;object-fit:cover}.visual.poster{background:#fff;padding:16px;border:1px solid var(--line)}.visual.poster img{object-fit:contain;background:#fff}.list{display:grid;gap:14px}.item{display:flex;gap:14px;align-items:flex-start;background:white;border:1px solid var(--line);padding:18px;border-radius:20px}.check{flex:0 0 28px;width:28px;height:28px;border-radius:50%;background:var(--cyan);color:white;display:grid;place-items:center;font-weight:900}.item b{color:var(--orange)}.process{position:relative;display:grid;grid-template-columns:repeat(6,1fr);gap:14px}.step{position:relative;background:white;border:1px solid var(--line);border-radius:22px;padding:22px;min-height:180px}.step .num{position:absolute;top:-16px;left:20px;width:34px;height:34px;border-radius:50%;background:var(--blue);color:white;font-weight:900;display:grid;place-items:center;box-shadow:0 10px 24px rgba(15,100,164,.25)}.step h3{margin:18px 0 8px;color:var(--navy);font-size:18px}.step p{margin:0;color:var(--muted);font-size:14px}.dark{background:linear-gradient(135deg,#061b3d,#0a5591);color:white;position:relative;overflow:hidden}.dark:before{content:"";position:absolute;inset:-30%;background:radial-gradient(circle at 20% 20%,rgba(18,168,168,.23),transparent 28%),radial-gradient(circle at 90% 60%,rgba(255,255,255,.12),transparent 25%)}.dark .container{position:relative}.dark h2,.dark h3{color:white}.dark p{color:#d6e9ff}.logo-cloud{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.logo-box{border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);border-radius:18px;padding:18px;font-weight:800;color:white}.contact{background:white;border-radius:34px;padding:36px;display:grid;grid-template-columns:1.1fr .9fr;gap:28px;box-shadow:var(--shadow);border:1px solid var(--line)}.contact-card{background:var(--soft);border-radius:26px;padding:26px}.contact-card p{margin:8px 0;color:#38536e}.footer{padding:34px 0;background:#061b3d;color:#c8daee}.footer .container{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}.footer b{color:white}
+
+    .floating-shape{position:absolute;border-radius:999px;filter:blur(.2px);opacity:.75;pointer-events:none}
+    .shape-1{width:140px;height:140px;right:8%;top:18%;background:radial-gradient(circle,rgba(18,168,168,.18),transparent 70%);animation:floatY 7s ease-in-out infinite}
+    .shape-2{width:90px;height:90px;left:7%;bottom:12%;background:radial-gradient(circle,rgba(229,107,36,.18),transparent 70%);animation:floatY 8s ease-in-out infinite reverse}
+    @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .hero-card,.card,.step,.visual,.contact{transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease}
+    .card:hover,.step:hover{transform:translateY(-6px);box-shadow:0 22px 54px rgba(8,36,83,.12);border-color:#b8d6ee}
+    .hero-card:hover,.visual:hover{transform:translateY(-4px)}
+    .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .team-card{position:relative;overflow:hidden;background:white;border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:0 14px 40px rgba(8,36,83,.07)}
+    .team-card:before{content:"";position:absolute;inset:0 0 auto 0;height:6px;background:linear-gradient(90deg,var(--blue),var(--cyan),var(--orange))}
+    .avatar{width:74px;height:74px;border-radius:24px;background:linear-gradient(145deg,var(--navy),var(--blue));display:grid;place-items:center;color:white;font-weight:900;font-size:22px;margin-bottom:18px;box-shadow:0 14px 32px rgba(15,100,164,.22)}
+    .team-card h3{margin:0 0 6px;color:var(--navy);font-size:19px;line-height:1.2}
+    .team-card span{display:block;color:var(--orange);font-weight:900;font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+    .team-card p{margin:0;color:#4b6078;font-size:14px}
+    .team-note{margin-top:18px;color:var(--muted);font-size:14px}
+    .form{display:grid;gap:14px}
+    .form label{display:grid;gap:7px;color:#38536e;font-weight:800;font-size:13px}
+    .form input,.form textarea,.form select{width:100%;border:1px solid var(--line);border-radius:16px;padding:13px 14px;font:inherit;color:var(--ink);background:white;outline:none;transition:border-color .2s ease,box-shadow .2s ease}
+    .form input:focus,.form textarea:focus,.form select:focus{border-color:var(--blue-2);box-shadow:0 0 0 4px rgba(31,142,201,.12)}
+    .form textarea{min-height:112px;resize:vertical}
+    .form-status{font-size:14px;color:var(--blue);font-weight:700;min-height:20px}
+    .cta-strip{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;background:linear-gradient(135deg,var(--navy),var(--blue));color:white;border-radius:34px;padding:32px;box-shadow:var(--shadow);margin-top:30px}
+    .cta-strip h3{margin:0 0 8px;font-size:26px;color:white}
+    .cta-strip p{margin:0;color:#dceeff}
+
+    @media (max-width:980px){.menu{display:none}.hero-grid,.split,.contact,.cta-strip{grid-template-columns:1fr}.hero-card{min-height:430px}.stats,.grid-3,.grid-2,.process,.logo-cloud,.team-grid{grid-template-columns:1fr 1fr}.section-head{display:block}.section-head p{margin-top:12px}}
+    @media (max-width:620px){section{padding:58px 0}.stats,.grid-3,.grid-2,.process,.logo-cloud,.team-grid{grid-template-columns:1fr}.hero{padding-top:54px}.hero-actions{display:grid}.btn{width:100%}.brand-logo{width:56px;height:56px}.brand-text{font-size:18px}.contact{padding:20px}}
+  
+    .process {
+  display: grid !important;
+  grid-template-columns: repeat(6, 1fr) !important;
+  gap: 16px !important;
+  margin-top: 36px !important;
+  align-items: stretch !important;
+}
+
+.process .step {
+  position: relative !important;
+  background: #ffffff !important;
+  border-radius: 18px !important;
+  padding: 58px 22px 28px !important;
+  min-height: 220px !important;
+  border: 1px solid rgba(0, 174, 199, 0.25) !important;
+  box-shadow: 0 18px 36px rgba(0, 42, 92, 0.22) !important;
+  overflow: visible !important;
+}
+
+.process .step::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 22px !important;
+  right: 22px !important;
+  height: 4px !important;
+  border-radius: 0 0 8px 8px !important;
+  background: linear-gradient(90deg, #00aebf, #005b96) !important;
+}
+
+.process .step .num {
+  position: absolute !important;
+  top: -18px !important;
+  left: 22px !important;
+  width: 42px !important;
+  height: 42px !important;
+  border-radius: 50% !important;
+  background: linear-gradient(135deg, #00aebf, #005b96) !important;
+  color: #ffffff !important;
+  font-size: 18px !important;
+  font-weight: 800 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 10px 24px rgba(0, 174, 199, 0.38) !important;
+  z-index: 2 !important;
+}
+
+.process .step h3 {
+  display: block !important;
+  margin: 0 0 12px !important;
+  color: #003b73 !important;
+  font-size: 18px !important;
+  line-height: 1.25 !important;
+  font-weight: 800 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.process .step p {
+  display: block !important;
+  margin: 0 !important;
+  color: #1f2937 !important;
+  font-size: 15px !important;
+  line-height: 1.45 !important;
+  font-weight: 600 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Caso algum estilo geral esteja afetando textos dentro da seção azul */
+.process .step *,
+.process .step h3,
+.process .step p {
+  text-shadow: none !important;
+}
+
+/* Hover */
+.process .step:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 24px 48px rgba(0, 42, 92, 0.32) !important;
+}
+
+/* Responsividade */
+@media (max-width: 1200px) {
+  .process {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 22px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .process {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .process .step {
+    min-height: 190px !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .process {
+    grid-template-columns: 1fr !important;
+  }
+
+  .process .step {
+    min-height: auto !important;
+  }
+}
+  
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="CPIDT">
+        <img class="brand-logo" src="assets/cpdi-logo-sem-nome.png" alt="Logo oficial do CPIDT" />
+        <img class="brand-logo" src="assets/cpdi-logo-somente-nome.png" alt="Logo oficial do CPIDT" />
+        <div class="brand-text"><small>[Complexo de Pesquisa, Inovação e Desenvolvimento Tecnológico]</small></div>
+      </a>
+      <nav class="menu" aria-label="Navegação principal">
+        <a href="#sobre">Sobre</a><a href="#areas">Áreas</a><a href="#jornada">Parceria</a><a href="#projetos">Projetos</a><a href="#equipe">Equipe</a><a href="#contato">Contato</a>
+      </nav>
+      
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <span class="floating-shape shape-1"></span>
+      <span class="floating-shape shape-2"></span>
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Hub de Inovação Tecnológica — UECE</span>
+          <h1>Transformamos pesquisa em inovação de alto impacto para a indústria.</h1>
+          <p class="lead">O CPIDT conecta excelência acadêmica, engenharia aplicada e velocidade de mercado para desenvolver soluções em IA, saúde digital, redes inteligentes, cibersegurança, hardware médico e sistemas embarcados.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#contato">Construir uma parceria</a>
+            <a class="btn alt" href="#areas">Conhecer capacidades</a>
+          </div>
+          <div class="stats" aria-label="Indicadores do CPIDT">
+            <div class="stat"><b>+70</b><span>Projetos de PD&I</span></div>
+            <div class="stat"><b>37</b><span>Pesquisadores ativos</span></div>
+            <div class="stat"><b>+150</b><span>Publicações científicas</span></div>
+            <div class="stat"><b>+60</b><span>Teses e dissertações</span></div>
+          </div>
+        </div>
+        <div class="hero-card">
+          <img src="assets/cpdi-transformando-saude.png" alt="CPIDT transformando ciência em soluções reais para a saúde" />
+          <div class="glass">
+            <strong>Pesquisa de ponta com agilidade industrial</strong>
+            <p>Do desafio tecnológico ao MVP, com equipe multidisciplinar, prototipagem, validação e transferência tecnológica.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="tag">Por que escolher o CPIDT?</span><h2>Um parceiro all-in-one para inovação aplicada.</h2></div>
+          <p>Estrutura que integra pesquisa básica, prototipagem, desenvolvimento, validação, captação de incentivos e entrega de soluções prontas para operação.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card"><div class="icon">▣</div><h3>Redução de custo em PD&I</h3><p>Compartilhamento de infraestrutura universitária e apoio técnico para reduzir barreiras de inovação.</p></article>
+          <article class="card"><div class="icon">◉</div><h3>Acesso a especialistas</h3><p>Equipe qualificada de doutores, mestres, engenheiros e pesquisadores orientados a resultados.</p></article>
+          <article class="card"><div class="icon">↗</div><h3>Incentivos e fomento</h3><p>Apoio na estruturação de projetos para FINEP, BNDES, EMBRAPII, Lei do Bem e Lei de Informática.</p></article>
+          <article class="card"><div class="icon">⚙</div><h3>Desenvolvimento acelerado</h3><p>Da ideia ao protótipo com método ágil, documentação e rigor científico.</p></article>
+          <article class="card"><div class="icon">✦</div><h3>IA aplicada à saúde e indústria</h3><p>Soluções de IA generativa, explicável e multimodal para problemas reais de negócio e operação.</p></article>
+          <article class="card highlight"><div class="icon">✓</div><h3>Co-criação com empresas</h3><p>Trabalho lado a lado desde a definição do problema até o escalonamento industrial.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="areas" style="background:#fff">
+      <div class="container split">
+        <div class="visual poster"><img src="assets/cpdi-capacidades-hospitalar.png" alt="Capacidades técnicas do CPIDT para a indústria hospitalar" /></div>
+        <div>
+          <span class="tag">Capacidades técnicas</span>
+          <h2 style="font-size:clamp(32px,4vw,50px);line-height:1.05;color:var(--navy);letter-spacing:-.055em;margin:0 0 20px">Soluções para a indústria hospitalar e tecnológica.</h2>
+          <div class="list">
+            <div class="item"><span class="check">✓</span><p><b>Arquiteturas médicas:</b> predição, diagnóstico e classificação de doenças com IA.</p></div>
+            <div class="item"><span class="check">✓</span><p><b>Software hospitalar:</b> sistemas de gestão escaláveis, intuitivos e em conformidade com a LGPD.</p></div>
+            <div class="item"><span class="check">✓</span><p><b>Aplicativos médicos:</b> iOS e Android para monitoramento de pacientes e logística em saúde.</p></div>
+            <div class="item"><span class="check">✓</span><p><b>Hardware, firmware e prototipagem:</b> do design inicial à validação industrial de dispositivos médicos.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div><span class="tag">Áreas de atuação</span><h2>Competências integradas em tecnologia avançada.</h2></div>
+          <p>O CPIDT atua em frentes de alta demanda global, combinando software, hardware, ciência de dados, segurança e engenharia aplicada.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card"><div class="icon">AI</div><h3>Inteligência Artificial & Otimização</h3><p>IA generativa e explicável, modelos multimodais, manutenção preditiva, detecção de fraudes e automação industrial.</p></article>
+          <article class="card"><div class="icon">♡</div><h3>Saúde Digital</h3><p>Diagnóstico por IA, e-health, telemedicina, gestão de dados de pacientes e participação no consórcio COBERTA.</p></article>
+          <article class="card"><div class="icon">⌁</div><h3>Redes inteligentes</h3><p>5G/6G, IoT, edge computing, protocolos de nova geração, mobilidade e infraestrutura conectada.</p></article>
+          <article class="card"><div class="icon">🔒</div><h3>Cibersegurança</h3><p>Detecção de DDoS, IDS para veículos autônomos e drones, blockchain e smart contracts.</p></article>
+          <article class="card"><div class="icon">▤</div><h3>Hardware & Sistemas embarcados</h3><p>Firmware, instrumentação, integração de sensores, telemetria e protótipos industriais.</p></article>
+          <article class="card"><div class="icon">▧</div><h3>Desenvolvimento de sistemas</h3><p>Plataformas web/mobile, middleware, ERPs, controle de acesso e software de gestão industrial.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="jornada" class="dark">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="tag" style="color:#7de3e3">Jornada comercial</span><h2>Como funciona a parceria com o CPIDT.</h2></div>
+          <p>Um processo estruturado, ágil e orientado a resultados — do desafio tecnológico à inovação aplicada.</p>
+        </div>
+        <div class="process">
+          <div class="step"><span class="num">1</span><h3>Identificação do desafio</h3><p>Mapeamento do problema tecnológico da empresa.</p></div>
+          <div class="step"><span class="num">2</span><h3>Construção do projeto</h3><p>Escopo, equipe, cronograma, entregáveis e indicadores.</p></div>
+          <div class="step"><span class="num">3</span><h3>Captação de incentivos</h3><p>Estruturação para Lei do Bem, Lei de Informática, FINEP, BNDES e EMBRAPII.</p></div>
+          <div class="step"><span class="num">4</span><h3>Desenvolvimento do MVP</h3><p>Prototipagem ágil com rigor científico e validação técnica.</p></div>
+          <div class="step"><span class="num">5</span><h3>Transferência tecnológica</h3><p>Entrega com documentação, treinamento e suporte.</p></div>
+          <div class="step"><span class="num">6</span><h3>Escalonamento industrial</h3><p>Apoio à implantação, evolução e operação do produto.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projetos">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="tag">Projetos e track record</span><h2>Experiência em soluções que chegam ao mercado.</h2></div>
+          <p>Mais de 30 anos de colaboração com empresas nacionais e multinacionais em projetos de PD&I e tecnologia aplicada.</p>
+        </div>
+        <div class="grid-2">
+          <article class="card"><h3>Projetos em andamento</h3><p>Fraudes bancárias com IA, diagnóstico multimodal, aprendizado federado, IDS em veículos autônomos, redes veiculares, handover 5G/6G e consentimento com blockchain.</p></article>
+          <article class="card"><h3>Projetos entregues</h3><p>Roteador óptico e software SDN, firmware para ATMs, cloud computing, ERP e aplicativos mobile/web, telemetria de hidrômetros, controle de acesso, NTP e MasterTool/CODESYS.</p></article>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="equipe" style="background:#fff">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="tag">Equipe</span><h2>Pesquisadores e especialistas orientados a resultados.</h2></div>
+          <p>Time multidisciplinar de doutores, mestres e engenheiros com atuação em IA, redes, saúde digital, sistemas embarcados, segurança e desenvolvimento de software.</p>
+        </div>
+        <div class="team-grid">
+          <article class="team-card"><div class="avatar">JC</div><h3>Prof. Dr. Joaquim Celestino Jr.</h3><span>Coordenação e liderança científica</span><p>Referência em redes de computadores, inteligência artificial e inovação tecnológica aplicada.</p></article>
+          <article class="team-card"><div class="avatar">BA</div><h3>Prof. Dr. Bonfim Amaro Jr.</h3><span>IA, ciência de dados e sistemas</span><p>Atuação em inteligência aplicada, desenvolvimento de soluções computacionais e projetos de PD&I.</p></article>
+          <article class="team-card"><div class="avatar">AS</div><h3>Prof. Dr. Alisson Barbosa de Souza</h3><span>Pesquisa aplicada</span><p>Integra o corpo de pesquisadores do CPIDT em projetos multidisciplinares de inovação tecnológica.</p></article>
+          <article class="team-card"><div class="avatar">DF</div><h3>Prof. Dr. David Freitas Moura Mota</h3><span>Engenharia e tecnologia</span><p>Contribui para o desenvolvimento de soluções aplicadas em parceria com a indústria.</p></article>
+          <article class="team-card"><div class="avatar">EA</div><h3>Prof. Dr. Evandro Carvalho de Andrade</h3><span>Sistemas e inovação</span><p>Pesquisa e desenvolvimento em soluções computacionais para demandas industriais e institucionais.</p></article>
+          <article class="team-card"><div class="avatar">FG</div><h3>Prof. Dr. Francisco Geraldo de Melo Pinheiro</h3><span>Pesquisa multidisciplinar</span><p>Atuação em projetos de base tecnológica com foco em resultados e transferência de conhecimento.</p></article>
+          <article class="team-card"><div class="avatar">SA</div><h3>Profa. Dra. Stephanie Alencar Braga dos Santos</h3><span>Saúde digital e inovação</span><p>Integra a frente de pesquisa aplicada com foco em soluções para saúde, dados e tecnologia.</p></article>
+          <article class="team-card"><div class="avatar">+</div><h3>Rede CDIDT</h3><span>37 pesquisadores ativos</span><p>Equipe ampliada com especialistas, mestres, doutores, engenheiros, bolsistas e parceiros internacionais.</p></article>
+        </div>
+        <p class="team-note">A seção pode receber fotos reais dos pesquisadores posteriormente. Nesta versão, os cards usam avatares institucionais com iniciais para manter a identidade visual limpa e profissional.</p>
+      </div>
+    </section>
+
+    <section class="dark">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="tag" style="color:#7de3e3">Prova social</span><h2>Tecnologias desenvolvidas para empresas líderes.</h2></div>
+          <p>Atuação em saúde, automação, telecomunicações, TI, controle de acesso e indústria 4.0.</p>
+        </div>
+        <div class="logo-cloud">
+          <div class="logo-box">HP · Dell · Nokia · Pirelli · Legrand</div>
+          <div class="logo-box">GAREN · PPA · ROSSI · NICE · Control ID · HTM</div>
+          <div class="logo-box">PADTEC · Altus · Bematech · Dimep · Sweda · Urano</div>
+          <div class="logo-box">Telcon · Teracom · Digitel · RNP · Fibracem</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato">
+      <div class="container contact">
+        <div>
+          <span class="tag">Próximo passo</span>
+          <h2 style="font-size:clamp(32px,4vw,50px);line-height:1.05;color:var(--navy);letter-spacing:-.055em;margin:0 0 16px">Vamos construir a próxima geração de inovação juntos?</h2>
+          <p style="font-size:18px;color:#4b6078;margin:0 0 24px">Desenvolva conosco produtos inteligentes, IA aplicada, saúde digital, sistemas críticos, redes inteligentes e plataformas embarcadas — com suporte técnico de excelência e acesso a incentivos.</p>
+          <a class="btn" href="mailto:joaquim.celestino@uece.br?subject=Interesse%20em%20parceria%20com%20o%20CPDI">Entrar em contato</a>
+        </div>
+        <div class="contact-card">
+          <h3 style="margin-top:0;color:var(--navy)">Solicite uma conversa técnica</h3>
+          <form class="form" id="contactForm">
+            <label>Nome
+              <input type="text" name="nome" placeholder="Seu nome" required>
+            </label>
+            <label>E-mail
+              <input type="email" name="email" placeholder="seu@email.com" required>
+            </label>
+            <label>Área de interesse
+              <select name="area" required>
+                <option value="">Selecione uma área</option>
+                <option>Inteligência Artificial</option>
+                <option>Saúde Digital</option>
+                <option>Hardware / Sistemas Embarcados</option>
+                <option>Redes Inteligentes / 5G / 6G</option>
+                <option>Cibersegurança</option>
+                <option>Desenvolvimento de Software</option>
+                <option>Parceria de PD&I</option>
+              </select>
+            </label>
+            <label>Mensagem
+              <textarea name="mensagem" placeholder="Descreva o desafio tecnológico ou a ideia de parceria" required></textarea>
+            </label>
+            <button class="btn" type="submit">Enviar por e-mail</button>
+            <div class="form-status" id="formStatus" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+      <div class="container">
+        <div class="cta-strip">
+          <div>
+            <h3>CPIDT — UECE</h3>
+            <p><b>Contato:</b> Prof. Dr. Joaquim Celestino Júnior · <b>E-mail:</b> joaquim.celestino@uece.br · <b>Local:</b> Prédio NC2, Universidade Estadual do Ceará — UECE · Av. Dr. Silas Munguba, 1700 — Campus do Itaperi, Fortaleza/CE</p>
+          </div>
+          <a class="btn alt" href="mailto:joaquim.celestino@uece.br">Abrir e-mail</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container"><span style="display:flex;align-items:center;gap:12px"><img src="assets/cpdi-logo-sem-nome.png" alt="Logo oficial do CPIDT" style="width:46px;height:46px;object-fit:contain"><span><b>CPIDT</b> — Complexo de Pesquisa, Inovação e Desenvolvimento Tecnológico da UECE</span></span><span>IA Aplicada · Saúde Digital · Redes Inteligentes · Cibersegurança · Hardware/Sistemas Embarcados</span></div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('section .section-head, .card, .step, .visual, .team-card, .contact, .cta-strip, .stat').forEach((el, index) => {
+      el.classList.add('reveal');
+      el.style.transitionDelay = `${Math.min(index % 6, 5) * 60}ms`;
+      observer.observe(el);
+    });
+
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
+    if (form) {
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const data = new FormData(form);
+        const subject = encodeURIComponent('Interesse em parceria com o CPDI');
+        const body = encodeURIComponent(
+          `Nome: ${data.get('nome')}\n` +
+          `E-mail: ${data.get('email')}\n` +
+          `Área de interesse: ${data.get('area')}\n\n` +
+          `Mensagem:\n${data.get('mensagem')}`
+        );
+        status.textContent = 'Abrindo seu aplicativo de e-mail com a mensagem preenchida...';
+        window.location.href = `mailto:joaquim.celestino@uece.br?subject=${subject}&body=${body}`;
+      });
+    }
+  </script>
+
+</body>
+</html>
