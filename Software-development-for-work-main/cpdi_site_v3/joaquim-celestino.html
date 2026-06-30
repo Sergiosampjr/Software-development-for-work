@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prof. Dr. Joaquim Celestino Jr. | CPIDT – UECE</title>
+  <meta name="description" content="Perfil do Prof. Dr. Joaquim Celestino Júnior — Coordenador do CPIDT, referência em redes de computadores, inteligência artificial e inovação tecnológica na UECE." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --navy:#082453;
+      --blue:#0f64a4;
+      --blue-2:#1f8ec9;
+      --cyan:#12a8a8;
+      --orange:#e56b24;
+      --red:#cc2030;
+      --ink:#122033;
+      --muted:#64748b;
+      --line:#dbe7f3;
+      --soft:#eef7ff;
+      --white:#fff;
+      --shadow:0 22px 60px rgba(8,36,83,.16);
+      --radius:26px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink);background:#f8fbff;line-height:1.55;}
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1000px,92vw);margin-inline:auto}
+
+    /* TOPBAR */
+    .topbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.88);backdrop-filter:blur(18px);border-bottom:1px solid rgba(219,231,243,.9)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:900;color:var(--navy);letter-spacing:-.04em;font-size:17px}
+    .back-btn{display:inline-flex;align-items:center;gap:8px;padding:9px 18px;border-radius:999px;border:1px solid var(--line);background:white;color:var(--navy);font-weight:700;font-size:13px;cursor:pointer;transition:.2s}
+    .back-btn:hover{background:var(--soft);border-color:#b8d6ee}
+
+    /* HERO PROFILE */
+    .profile-hero{padding:60px 0 50px;background:radial-gradient(circle at 90% 10%,rgba(18,168,168,.18),transparent 30%),radial-gradient(circle at 10% 80%,rgba(31,142,201,.13),transparent 30%),linear-gradient(180deg,#fff,#eef7ff)}
+    .profile-hero:before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(15,100,164,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(15,100,164,.07) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(180deg,rgba(0,0,0,.6),transparent 80%)}
+    .profile-hero{position:relative}
+    .profile-top{display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center;position:relative}
+    .avatar-xl{width:120px;height:120px;border-radius:32px;background:linear-gradient(145deg,var(--navy),var(--blue));display:grid;place-items:center;color:white;font-weight:900;font-size:42px;box-shadow:0 18px 44px rgba(15,100,164,.28);flex-shrink:0}
+    .profile-name{font-size:clamp(28px,5vw,52px);font-weight:900;line-height:1;color:var(--navy);letter-spacing:-.055em;margin:0 0 10px}
+    .profile-role{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.8);border:1px solid rgba(18,168,168,.28);border-radius:999px;padding:7px 16px;font-weight:800;font-size:13px;color:var(--blue);text-transform:uppercase;letter-spacing:.07em;margin-bottom:16px}
+    .profile-role:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--cyan)}
+    .profile-bio{font-size:17px;color:#35506f;max-width:620px;margin:0}
+    .profile-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+    .tag-chip{background:var(--soft);border:1px solid var(--line);border-radius:99px;padding:5px 14px;font-size:12px;font-weight:700;color:var(--blue)}
+
+    /* SECTIONS */
+    .section{padding:54px 0}
+    .section-title{font-size:clamp(22px,3vw,32px);font-weight:900;color:var(--navy);letter-spacing:-.04em;margin:0 0 6px}
+    .section-sub{font-size:15px;color:var(--muted);margin:0 0 28px;font-weight:500}
+    .divider{height:1px;background:var(--line);margin:0}
+
+    /* CARDS */
+    .info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px}
+    .info-card{background:white;border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:0 8px 24px rgba(8,36,83,.05)}
+    .info-card .label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:6px}
+    .info-card .value{font-size:15px;font-weight:700;color:var(--navy)}
+
+    /* EXPERTISE */
+    .expertise-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .exp-card{background:white;border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 8px 24px rgba(8,36,83,.05);display:flex;gap:16px;align-items:flex-start}
+    .exp-icon{width:44px;height:44px;border-radius:14px;background:var(--soft);display:grid;place-items:center;color:var(--blue);font-size:22px;flex-shrink:0}
+    .exp-card h4{margin:0 0 6px;color:var(--navy);font-size:16px}
+    .exp-card p{margin:0;color:#4b6078;font-size:14px}
+
+    /* TIMELINE */
+    .timeline{display:grid;gap:0}
+    .tl-item{display:grid;grid-template-columns:120px 1fr;gap:24px;padding:20px 0;border-bottom:1px solid var(--line)}
+    .tl-item:last-child{border-bottom:none}
+    .tl-year{font-size:13px;font-weight:800;color:var(--orange);padding-top:3px}
+    .tl-content h4{margin:0 0 4px;color:var(--navy);font-size:16px;font-weight:700}
+    .tl-content p{margin:0;color:#4b6078;font-size:14px}
+
+    /* CONTACT */
+    .contact-strip{background:linear-gradient(135deg,var(--navy),var(--blue));border-radius:var(--radius);padding:36px;color:white;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;box-shadow:var(--shadow)}
+    .contact-strip h3{margin:0 0 8px;font-size:24px;color:white}
+    .contact-strip p{margin:0;color:#d6e9ff;font-size:15px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:999px;padding:13px 22px;background:white;color:var(--navy);font-weight:800;font-size:14px;cursor:pointer;transition:.2s;box-shadow:0 10px 26px rgba(8,36,83,.18)}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(8,36,83,.24)}
+    .btn.outline{background:rgba(255,255,255,.12);color:white;border:1px solid rgba(255,255,255,.28);box-shadow:none}
+    .btn.outline:hover{background:rgba(255,255,255,.2)}
+    .btn-row{display:flex;gap:12px;flex-wrap:wrap}
+
+    /* FOOTER */
+    .footer{padding:28px 0;background:#061b3d;color:#c8daee;font-size:13px;margin-top:60px}
+    .footer .container{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+    .footer b{color:white}
+
+    @media(max-width:760px){
+      .profile-top{grid-template-columns:1fr;text-align:center}
+      .avatar-xl{margin:0 auto}
+      .profile-bio{margin:0 auto}
+      .profile-tags{justify-content:center}
+      .info-grid{grid-template-columns:1fr 1fr}
+      .expertise-grid{grid-template-columns:1fr}
+      .contact-strip{grid-template-columns:1fr}
+      .btn-row{justify-content:flex-start}
+    }
+    @media(max-width:480px){
+      .info-grid{grid-template-columns:1fr}
+      .tl-item{grid-template-columns:1fr;gap:4px}
+      .tl-year{font-size:12px}
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <span>CPIDT</span>
+        <span style="font-weight:400;color:var(--muted);font-size:13px">/ Equipe</span>
+      </a>
+      <a class="back-btn" href="./index.html#equipe">← Voltar ao site</a>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="profile-hero">
+      <div class="container">
+        <div class="profile-top">
+          <div class="avatar-xl">JC</div>
+          <div>
+            <div class="profile-role">Coordenação e Liderança Científica</div>
+            <h1 class="profile-name">Prof. Dr. Joaquim Celestino Júnior</h1>
+            <p class="profile-bio">Pesquisador sênior e coordenador do CPIDT – Complexo de Pesquisa, Inovação e Desenvolvimento Tecnológico da UECE. Referência nacional em redes de computadores, inteligência artificial e inovação tecnológica aplicada à indústria e à saúde digital.</p>
+            <div class="profile-tags">
+              <span class="tag-chip">Redes de Computadores</span>
+              <span class="tag-chip">Inteligência Artificial</span>
+              <span class="tag-chip">5G / 6G</span>
+              <span class="tag-chip">Saúde Digital</span>
+              <span class="tag-chip">PD&amp;I</span>
+              <span class="tag-chip">IoT</span>
+              <span class="tag-chip">Cibersegurança</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+
+        <!-- PROJETOS RELEVANTES -->
+        <div style="margin-bottom:48px">
+          <div class="section-title">Projetos Relevantes</div>
+          <div class="section-sub">Iniciativas coordenadas em PD&amp;I</div>
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-year">Em andamento</div>
+              <div class="tl-content">
+                <h4>Detecção de Fraudes Bancárias com IA</h4>
+                <p>Desenvolvimento de modelos de aprendizado de máquina para identificação em tempo real de transações fraudulentas em sistemas financeiros.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-year">Em andamento</div>
+              <div class="tl-content">
+                <h4>Diagnóstico Multimodal e Aprendizado Federado</h4>
+                <p>Sistemas de diagnóstico clínico assistido por IA com privacidade preservada por aprendizado federado, voltados à saúde digital.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-year">Em andamento</div>
+              <div class="tl-content">
+                <h4>IDS para Veículos Autônomos e Handover 5G/6G</h4>
+                <p>Sistemas de detecção de intrusão para veículos conectados e algoritmos de handover inteligente em redes de próxima geração.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-year">Entregue</div>
+              <div class="tl-content">
+                <h4>Roteador Óptico e Software SDN</h4>
+                <p>Desenvolvimento de hardware e software para roteamento óptico com arquitetura definida por software, em parceria com PADTEC e Fibracem.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-year">Entregue</div>
+              <div class="tl-content">
+                <h4>Firmware para ATMs e Sistemas de Controle de Acesso</h4>
+                <p>Desenvolvimento de firmware embarcado para caixas eletrônicos e soluções de controle de acesso para empresas nacionais do setor.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-year">Entregue</div>
+              <div class="tl-content">
+                <h4>Telemetria de Hidrômetros e ERP Industrial</h4>
+                <p>Plataforma IoT para leitura remota de hidrômetros e sistema ERP integrado para automação de processos industriais.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider" style="margin-bottom:48px"></div>
+
+        <!-- CONTATO -->
+        <div class="contact-strip">
+          <div>
+            <h3>Entre em contato com o Prof. Celestino</h3>
+            <p>Interessado em desenvolver um projeto de PD&amp;I, firmar uma parceria ou discutir um desafio tecnológico? Envie uma mensagem diretamente.</p>
+          </div>
+          <div class="btn-row">
+            <a class="btn" href="mailto:joaquim.celestino@uece.br?subject=Interesse%20em%20parceria%20com%20o%20CPIDT">Enviar e-mail</a>
+            <a class="btn outline" href="index.html#contato">Formulário de contato</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <span><b>CPIDT</b> — Complexo de Pesquisa, Inovação e Desenvolvimento Tecnológico da UECE</span>
+      <span>Av. Dr. Silas Munguba, 1700 — Campus do Itaperi, Fortaleza/CE</span>
+    </div>
+  </footer>
+
+</body>
+</html>
